@@ -1,34 +1,86 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="ControlCatalog.Pages.ExpanderPage">
-  <StackPanel Orientation="Vertical" Spacing="4">
-    <TextBlock Classes="h1">Expander</TextBlock>
-    <TextBlock Classes="h2">Expands to show nested content</TextBlock>
-
-    <StackPanel Orientation="Vertical"
-                Margin="0,16,0,0"
-                HorizontalAlignment="Center"
-                Spacing="16">
-      <Expander Header="Expand Up" ExpandDirection="Up">
-        <StackPanel>
-          <TextBlock>Expanded content</TextBlock>
-        </StackPanel>
-      </Expander>
-      <Expander Header="Expand Down" ExpandDirection="Down">
-        <StackPanel>
-          <TextBlock>Expanded content</TextBlock>
-        </StackPanel>
-      </Expander>
-      <Expander Header="Expand Left" ExpandDirection="Left">
-        <StackPanel>
-          <TextBlock>Expanded content</TextBlock>
-        </StackPanel>
-      </Expander>
-      <Expander Header="Expand Right" ExpandDirection="Right">
-        <StackPanel>
-          <TextBlock>Expanded content</TextBlock>
-        </StackPanel>
-      </Expander>
-    </StackPanel>    
-  </StackPanel>
+  <Grid RowDefinitions="40,64,*">
+    <TextBlock FontSize="20" Grid.Row="0">Expander</TextBlock>
+    <TextBlock FontSize="14" Grid.Row="1">Expands to show nested content</TextBlock>
+    <ScrollViewer Grid.Row="3" Margin="5" >
+      <StackPanel Margin="5"  Width="500" Height="400" HorizontalAlignment="Stretch">
+        <Expander
+          Name="Expander1"
+          VerticalAlignment="Top"
+          Header="Advanced Setting"
+          HorizontalAlignment="Left"
+          IsExpanded="False"
+          ExpandDirection="Down">
+          <Panel Background="{DynamicResource ThemeBackgroundBrush}">
+            <Grid
+              RowDefinitions="60, 80, 84,24,40"
+              ColumnDefinitions="260"
+              VerticalAlignment="Top"
+              Margin="20 20 20 20"
+              HorizontalAlignment="Center">
+              <TextBlock
+                Grid.Row="0"
+                FontSize="24"
+                FontWeight="SemiLight"
+                Text="Sharing with devices"
+                VerticalAlignment="Top"/>
+              <TextBlock
+               Grid.Row="1"
+               FontSize="14"
+               TextWrapping="Wrap">
+Apps on other devices
+(including connected phones and tablets)
+are alowed to open apps and send messages to this device and vice versa
+              </TextBlock>
+              <ToggleSwitch
+                Grid.Row="2" Grid.Column="1"
+                Content="Share" 
+                IsChecked="true"/>
+              <TextBlock
+                Grid.Row="3"
+                FontSize="16">
+                I can Share en receive from
+              </TextBlock>
+              <ComboBox
+                Grid.Row="4"
+                Width="200"
+                SelectedIndex="0">
+                <ComboBoxItem>Only on my device</ComboBoxItem>
+                <ComboBoxItem>The whole world</ComboBoxItem>
+              </ComboBox>
+            </Grid>
+          </Panel>
+        </Expander>
+        <Expander
+          Name="Expander3"
+          Header="Right expander 2"
+          VerticalContentAlignment="Top"
+          ExpandDirection="Left">
+          <StackPanel
+            Spacing="10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="{DynamicResource ThemeBackgroundBrush}">
+            <ListBox
+              SelectedIndex="0"
+              Margin="10 5 10 5"
+              Width="200"
+              BorderThickness="1">
+              <ListBoxItem Content="Item1"/>
+              <ListBoxItem Content="Item2"/>
+              <ListBoxItem Content="Item3"/>
+            </ListBox>
+          </StackPanel>
+        </Expander>
+        <Expander Header="Example 3" ExpandDirection="Right" IsExpanded="False" >
+          <Expander.ContentTransition>
+            <PageSlide Orientation="Vertical" Duration="00:00:00.2"/>
+          </Expander.ContentTransition>
+          <Button Height="120">SliderContent</Button>
+        </Expander>
+      </StackPanel>
+    </ScrollViewer>
+  </Grid>
 </UserControl>
