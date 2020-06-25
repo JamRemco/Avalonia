@@ -59,7 +59,7 @@ are alowed to open apps and send messages to this device and vice versa
             Name="Expander3" 
             Header="Right expander 2"
             VerticalContentAlignment="Top"
-            IsExpanded="True" ExpandDirection="Left">
+            ExpandDirection="Left">
             <StackPanel 
               Spacing="10"  
               HorizontalAlignment="Center" 
